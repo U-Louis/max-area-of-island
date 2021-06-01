@@ -5,45 +5,53 @@
 var maxAreaOfIsland = function(grid) {
     
     let isles = [];
+    var idx= 0;
     
     //seen = 2
     
-    function check(x,y){
+    function check(x,y, idx){
         
-        isle++;
+        isles[idx] += 1;
+        grid[x][y] = 2;
         
         //rigth
-        if(grid[x+1][y] = 1){
-            check(x+1,y);
+        if(grid[x+1]){
+            grid[x+1][y] =2;
+            if(grid[x+1][y] == 1){
+                check(x+1,y);
+            }
         }
-        grid[x+1][y] =2;
 
         //left
-        if(grid[x-1][y] = 1){
-            check(x-1,y);
+        if(grid[x-1]){
+            grid[x-1][y] =2;
+            if(grid[x-1][y] == 1){
+                check(x-1,y);
+            }
         }
-        grid[x-1][y] =2;
-
         
         //bottom
-        if(grid[x][y+1] = 1){
-            check(x,y+1);
+        if(grid[x][y+1]){
+            grid[x][y+1] =2;
+            if(grid[x][y+1] == 1){
+                check(x,y+1);
+            }
         }
-        grid[x][y+1] =2;
         
         //top
-        if(grid[x][y-1] = 1){
-            check(x,y-1);
+        if(grid[x-1]){
+            grid[x-1][y] =2;
+            if(grid[x-1][y] == 1){
+                check(x-1,y);
+            }
         }
-        grid[x][y-1] =2;
 
     }
         
     function createIsles(x,y){
-        let isle = 0;
-        check(x,y);
-        grid[x][y] = 2;
-        isles.push(isle);
+        idx++;
+        check(x,y, idx);
+        isles.push(isles);
     }
     
     
@@ -55,8 +63,6 @@ var maxAreaOfIsland = function(grid) {
             }   
         }
     }
-    
-    
-    
+          
     return Math.max(...isles);
 };
