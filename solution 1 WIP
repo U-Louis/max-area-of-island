@@ -1,0 +1,58 @@
+/**
+ * @param {number[][]} grid
+ * @return {number}
+ */
+var maxAreaOfIsland = function(grid) {
+    
+    let isles = [];
+    
+    //seen = 2
+    
+    function check(x,y){
+        //rigth
+        if(grid[x+1][y] = 1){
+            isle++;
+            grid[x+1][y] =2;
+            check(x+1,y);
+        }
+        //left
+        if(grid[x-1][y] = 1){
+            isle++;
+            grid[x-1][y] =2;
+            check(x-1,y);
+        }
+        //bottom
+        if(grid[x][y+1] = 1){
+            isle++;
+            grid[x][y+1] =2;
+            check(x,y+1);
+        }
+        //top
+        if(grid[x][y-1] = 1){
+            isle++;
+            grid[x][y-1] =2;
+            check(x,y-1);
+        }
+    }
+        
+    function createIsles(x,y){
+        let isle = 0;
+        check(x,y);
+        grid[x][y] = 2;
+        isles.push(isle);
+    }
+    
+    
+    //iterate every case in the matrix
+    for(i=0;i<grid.length;i++){
+        for(j=0;j<grid[i].length; j++){        
+            if(grid[i][j] == 1){
+                createIsles(i,j);
+            }   
+        }
+    }
+    
+    
+    
+    return Math.max(...isles);
+};
