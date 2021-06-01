@@ -9,30 +9,34 @@ var maxAreaOfIsland = function(grid) {
     //seen = 2
     
     function check(x,y){
+        
+        isle++;
+        
         //rigth
         if(grid[x+1][y] = 1){
-            isle++;
-            grid[x+1][y] =2;
             check(x+1,y);
         }
+        grid[x+1][y] =2;
+
         //left
         if(grid[x-1][y] = 1){
-            isle++;
-            grid[x-1][y] =2;
             check(x-1,y);
         }
+        grid[x-1][y] =2;
+
+        
         //bottom
         if(grid[x][y+1] = 1){
-            isle++;
-            grid[x][y+1] =2;
             check(x,y+1);
         }
+        grid[x][y+1] =2;
+        
         //top
         if(grid[x][y-1] = 1){
-            isle++;
-            grid[x][y-1] =2;
             check(x,y-1);
         }
+        grid[x][y-1] =2;
+
     }
         
     function createIsles(x,y){
