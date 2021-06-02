@@ -60,3 +60,17 @@ var maxAreaOfIsland = function(grid) {
     }
     return Math.max(...isles);
 };
+
+
+/*
+569 / 728 test cases passed.
+Status: Wrong Answer
+
+Input:
+[[0,1],[1,1]]
+Output:
+2
+Expected:
+3
+
+*/
